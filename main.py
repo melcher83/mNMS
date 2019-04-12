@@ -1,5 +1,6 @@
 from pysnmp.hlapi import *
 import sys
+import re
 
 def walk(host, oid):
     t = []
@@ -48,6 +49,8 @@ while n != -1:
 n=len(x)-1
 
 print (x)
+
+pat = re.compile('[1-9]* = ')
 
 while n != -1:
     x[n] = x[n][13]
