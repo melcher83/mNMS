@@ -1,6 +1,6 @@
 from pysnmp.hlapi import *
 import sys
-import re
+
 
 def walk(host, oid):
     t = []
@@ -29,33 +29,25 @@ def walk(host, oid):
         else:
 
             for varBind in varBinds:
-                 print('%s = %s' % varBind)
-                 t.append('%s = %s' % varBind)
+                 print(varBind)
+                 t.append(varBind)
     return t
 
 
 
-x=walk('10.1.8.101', '1.0.8802.1.1.2.1.4.1.1.5')
+
+x=walk('10.1.8.101', '1.0.8802.1.1.2.1.4.2')  # 1.0.8802.1.1.2.1.4.2 Remote MGMT IP addresses
+
+neighbor_mac=[]
 
 
 
-n = len(x)-1
-print (n)
-while n != -1:
-    x[n]=x[n].split('.')
-    n=n-1
 
+test = pat.findall(str(x[1]))
 
-n=len(x)-1
+print (str(test))
 
-print (x)
-
-pat = re.compile('[1-9]* = ')
-
-while n != -1:
-    x[n] = x[n][13]
-    n = n - 1
-
+print ('X1: ' + str(x[1]))
 
 
 
